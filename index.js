@@ -17,6 +17,7 @@ function hook(type, opts, cb) {
 	const unhook = () => {
 		std.write = write;
 	};
+	unhook.originalStream = write
 
 	std.write = (str, enc, cb2) => {
 		const cbRet = cb(str, enc);
